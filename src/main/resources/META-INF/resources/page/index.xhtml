@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:sec="http://www.springframework.org/security/tags">
+
+<h:head>
+  <title>Examen JSF SPRING</title>
+  <h:outputStylesheet name="/static/css/btp.css" />
+  <h:outputStylesheet name="/static/css/fontawesome.min.css" />
+  <h:outputStylesheet name="/static/css/main.css" />
+</h:head>
+
+<h:body>
+
+
+
+  <!--head-->
+  <p:panel header="Examen JSF SPRING" style="margin: auto;">
+    <h:panelGrid columns="8" cellpadding="4" style="text-align: center;margin: auto">
+      <p:button value="Accueil" onclick="window.location.href='/page/index.xhtml';return false" />
+      <p:button value="Autres" onclick="window.location.href='/page/';return false" />
+    </h:panelGrid>
+  </p:panel>
+  <!--head-->
+
+  <div class="container" style="margin-top: 50px">
+    <h:form>
+      <p:panel header="Formulaire">
+        <h:panelGrid columns="2" cellpadding="4">
+
+          <h:outputText value="Nom du service " />
+          <p:inputText value="#{mainController.service.libelle}" />
+
+          <p:commandButton value="Ajouter" action="#{mainController.saveService}" />
+        </h:panelGrid>
+      </p:panel>
+
+      <!--<p:dialog header="Greeting" widgetVar="greetingDialog"
+        modal="true" resizable="false">
+        <h:panelGrid id="greeting" columns="1" cellpadding="4">
+          <h:outputText value="#{helloWorld.showGreeting()}" />
+        </h:panelGrid>
+      </p:dialog>-->
+    </h:form>
+
+    <p:dataTable var="service" value="#{mainController.services}">
+      <p:column headerText="Id">
+        <h:outputText value="#{service.id}" />
+      </p:column>
+
+      <p:column headerText="Nom du service">
+        <h:outputText value="#{service.libelle}" />
+      </p:column>
+      <p:column headerText="Action" style="text-align: center">
+        <h:outputLink value="#" style="color: green">
+          Editer
+        </h:outputLink>
+      </p:column>
+    </p:dataTable>
+  </div>
+
+
+</h:body>
+</html>
